@@ -1,0 +1,44 @@
+name: CIET Go Programming Assignments CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-assignment-1:
+    name: Test Assignment 1 - Student Results CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+          check-latest: true
+
+      - name: Run Tests for Assignment 1
+        working-directory: assignment-1-student-results
+        run: |
+          go test -v -race -cover ./...
+
+  test-assignment-2:
+    name: Test Assignment 2 - RESTful Web Service
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+          check-latest: true
+
+      - name: Run Tests for Assignment 2
+        working-directory: assignment-2-rest-api
+        run: |
+          go test -v -race -cover ./...
